@@ -19,7 +19,7 @@ const UserForm = ({ onAddUser }) => {
   <form>
    <div style={{ marginBottom: '1rem', display: 'flex', gap: '0.5rem' }}>
     <label style={{ flexBasis: '4rem' }} htmlFor='firstname'>
-     firstname:{' '}
+     firstname:
     </label>
     <input
      type='text'
@@ -30,7 +30,7 @@ const UserForm = ({ onAddUser }) => {
    </div>
    <div style={{ marginBottom: '1rem', display: 'flex', gap: '0.5rem' }}>
     <label style={{ flexBasis: '4rem' }} htmlFor='email'>
-     email:{' '}
+     email:
     </label>
     <input
      type='text'

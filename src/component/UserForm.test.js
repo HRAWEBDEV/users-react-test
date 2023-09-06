@@ -20,7 +20,13 @@ test('submit calls onAddUser', () => {
  // * render component
  render(<UserForm onAddUser={mock} />);
  // * find inputs
- const [firstnameInput, emailInput] = screen.getAllByRole('textbox');
+
+ const firstnameInput = screen.getByRole('textbox', {
+  name: /firstname/i,
+ });
+ const emailInput = screen.getByRole('textbox', {
+  name: /email/i,
+ });
  // * simulate clicking input
  user.click(firstnameInput);
  // * simulate typing the firstname
