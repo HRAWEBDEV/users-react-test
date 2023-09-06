@@ -14,15 +14,11 @@ test('it shows two inputs and one button', () => {
 
 test('submit calls onAddUser', () => {
  // * NOT THE BEST IMPLEMENTATION
- const users = [];
+ const mock = jest.fn();
  const firstname = 'hamid reza';
  const email = 'hamidwise1@gmail';
- const callBack = (newUser) => {
-  users.push(newUser);
- };
-
  // * render component
- render(<UserForm onAddUser={callBack} />);
+ render(<UserForm onAddUser={mock} />);
  // * find inputs
  const [firstnameInput, emailInput] = screen.getAllByRole('textbox');
  // * simulate clicking input
@@ -37,7 +33,6 @@ test('submit calls onAddUser', () => {
  const button = screen.getByRole('button');
  user.click(button);
  // * assertions (onAddUser is called)
- expect(users).toHaveLength(1);
- expect(users[0].firstname).toEqual(firstname);
- expect(users[0].email).toEqual(email);
+ expect(mock).toHaveBeenCalled();
+ expect(mock).toHaveBeenCalledWith({ firstname, email });
 });
