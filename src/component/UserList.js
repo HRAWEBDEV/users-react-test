@@ -24,7 +24,7 @@ const UserList = ({ users }) => {
      </td>
     </tr>
    </thead>
-   <tbody>
+   <tbody data-testid='users'>
     {users.map(({ firstname, email }) => {
      return (
       <tr key={firstname}>
