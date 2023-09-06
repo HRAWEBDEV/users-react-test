@@ -9,7 +9,7 @@ const containerStyles = {
 const App = () => {
  const [users, setUsers] = useState([]);
  const handleAddUser = (newUser) => {
-  setUsers((prev) => [...users, newUser]);
+  setUsers((prev) => [...prev, newUser]);
  };
 
  return (

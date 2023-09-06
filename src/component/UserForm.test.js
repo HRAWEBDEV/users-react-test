@@ -41,4 +41,5 @@ test('submit calls onAddUser', () => {
  // * assertions (onAddUser is called)
  expect(mock).toHaveBeenCalled();
  expect(mock).toHaveBeenCalledWith({ firstname, email });
+ // expect(firstnameInput).toHaveValue('');
 });

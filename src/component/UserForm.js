@@ -16,7 +16,7 @@ const UserForm = ({ onAddUser }) => {
  };
 
  return (
-  <form>
+  <form onSubmit={handleSubmit}>
    <div style={{ marginBottom: '1rem', display: 'flex', gap: '0.5rem' }}>
     <label style={{ flexBasis: '4rem' }} htmlFor='firstname'>
      firstname:
@@ -50,8 +50,6 @@ const UserForm = ({ onAddUser }) => {
       border: '1px solid gray',
       textTransform: 'capitalize',
      }}
-     type='submit'
-     onClick={handleSubmit}
     >
      add user
     </button>
