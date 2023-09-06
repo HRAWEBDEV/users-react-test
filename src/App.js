@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import UserForm from './component/UserForm';
+import UserList from './component/UserList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const containerStyles = {
+ padding: '1rem',
+};
+
+const App = () => {
+ const [users, setUsers] = useState([]);
+ const handleAddUser = (newUser) => {
+  setUsers((prev) => [...users, newUser]);
+ };
+
+ return (
+  <div style={containerStyles}>
+   <UserForm onAddUser={handleAddUser} />
+   <hr />
+   <UserList users={users} />
+  </div>
+ );
+};
 
 export default App;
