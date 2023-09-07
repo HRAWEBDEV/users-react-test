@@ -3,7 +3,7 @@ import user from '@testing-library/user-event';
 import '@testing-library/jest-dom';
 import UserForm from './UserForm';
 
-test('it shows two inputs and one button', () => {
+test('it shows two inputs and one button', async () => {
  render(<UserForm />);
  const inputs = screen.getAllByRole('textbox');
  const button = screen.getByRole('button');
@@ -12,7 +12,7 @@ test('it shows two inputs and one button', () => {
  expect(button).toBeInTheDocument();
 });
 
-test('submit calls onAddUser', () => {
+test('submit calls onAddUser', async () => {
  // * NOT THE BEST IMPLEMENTATION
  const mock = jest.fn();
  const firstname = 'hamid reza';
@@ -31,15 +31,16 @@ test('submit calls onAddUser', () => {
  user.click(firstnameInput);
  // * simulate typing the firstname
  user.keyboard(firstname);
-
  user.click(emailInput);
  user.keyboard(email);
 
  // * find the submit button
  const button = screen.getByRole('button');
- user.click(button);
+ await user.click(button);
  // * assertions (onAddUser is called)
  expect(mock).toHaveBeenCalled();
  expect(mock).toHaveBeenCalledWith({ firstname, email });
- // expect(firstnameInput).toHaveValue('');
+ // * after the submit the inputs are empty
+ expect(firstnameInput).toHaveValue('');
+ expect(emailInput).toHaveValue('');
 });
